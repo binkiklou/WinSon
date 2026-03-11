@@ -4,13 +4,33 @@
     <Filter Include="src">
       <UniqueIdentifier>{ad19ba27-355b-4074-a5e6-738ea19b8b0e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="impl">
-      <UniqueIdentifier>{84288648-8082-4255-9f5b-b783a2990601}</UniqueIdentifier>
+    <Filter Include="include">
+      <UniqueIdentifier>{2dc0828a-59e5-45f5-9deb-ed2008e63b66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\impl">
+      <UniqueIdentifier>{0bac8063-7bb8-4084-a697-5715af21f8c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="test.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="son.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="win_wrapper.cpp">
+      <Filter>src\impl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="son.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="win_wrapper.hpp">
+      <Filter>src\impl</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,13 +1,4 @@
 /*
-#include "son.hpp"
-
-int main()
-{
-	son::session s;
-	return 0;
-}
-*/
-
 #include <iostream>
 #include <string>
 #define NOMINMAX
@@ -21,25 +12,24 @@ void fill_sin(signed int freq, float tps, int frame_count, BYTE* buffer)
 {
 	// Generate sin
 	// Number of samples in one sine loop
-	int its = ((float)1 / (float)tps) * ((float)1 / (float)freq);
-	float* arr = new float[2 * its];
-	for (int i = 0; i < 2 * its; i += 2) {
+	int its = ((float)1/(float)tps)*((float)1 / (float)freq);
+	float* arr = new float[2*its];
+	for (int i = 0; i < 2*its; i+=2) {
 		float x = i * tps;
-		arr[i] = sinf(x * 3.1415f * (2 * freq));
-		arr[i + 1] = sinf(x * 3.1415f * (2 * freq));
+		arr[i] =   sinf(x * 3.1415f * (2 * freq));
+		arr[i+1] = sinf(x * 3.1415f * (2 * freq));
 	}
 
 	// Fill (double  for two channels)
 	int addr = 0;
-	while (addr + (2 * its * sizeof(float)) <= frame_count * 8) {
-		memcpy(buffer + addr, arr, 2 * its * sizeof(float));
+	while (addr + (2*its*sizeof(float)) <= frame_count*8) {
+		memcpy(buffer + addr, arr, 2*its*sizeof(float));
 		addr += 2 * its * sizeof(float);
 	}
 }
 
 int main()
 {
-
 	// OASHGSFHGFDSGF
 	int f = 0;
 	std::string str_f;
@@ -62,7 +52,7 @@ int main()
 	IMMDeviceEnumerator* ptr_immde = nullptr;
 	hres = CoCreateInstance(
 		__uuidof(MMDeviceEnumerator),
-		NULL, CLSCTX_ALL,
+		NULL, CLSCTX_ALL, 
 		__uuidof(IMMDeviceEnumerator),
 		(void**)&ptr_immde);
 	if (hres != S_OK) {
@@ -131,13 +121,13 @@ int main()
 	if (hres != S_OK) {
 		return 1;
 	}
-	fill_sin(f, ((float)1 / (float)buffer_size), buffer_size, buffer_data);
+	fill_sin(f,((float)1/(float)buffer_size), buffer_size, buffer_data);
 	DWORD flags = 0;
-	hres = ptr_arc->ReleaseBuffer(buffer_size, flags);
+	hres = ptr_arc->ReleaseBuffer(buffer_size,flags);
 	if (hres != S_OK) {
 		return 1;
 	}
-	REFERENCE_TIME duration = ((REFERENCE_TIME)10000000 * buffer_size) / wf->nSamplesPerSec;
+	REFERENCE_TIME duration = ((REFERENCE_TIME)10000000 * buffer_size)/wf->nSamplesPerSec;
 	//Start!
 	std::cout << "Client Audio Start" << std::endl;
 	hres = ptr_ac->Start();
@@ -152,7 +142,7 @@ int main()
 		ptr_ac->GetCurrentPadding(&frames_padding);
 		UINT32 numFramesAvailable = buffer_size - frames_padding;
 		ptr_arc->GetBuffer(numFramesAvailable, &buffer_data);
-		fill_sin(f, ((float)1 / (float)buffer_size), buffer_size, buffer_data);
+		fill_sin(f, ((float)1/(float)buffer_size), buffer_size, buffer_data);
 		ptr_arc->ReleaseBuffer(numFramesAvailable, flags);
 	}
 	// pas bessoin de stop lol
@@ -160,3 +150,4 @@ int main()
 	std::cout << "Client Audio Stop" << std::endl;
 	return 0;
 }
+*/
